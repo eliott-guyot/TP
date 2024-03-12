@@ -1,3 +1,4 @@
+package fr.univ_orleans.iut45.mud;
 import java.util.ArrayList;
 import java.util.List;
 class Thing{
@@ -6,6 +7,10 @@ class Thing{
 
     public Thing(String name){
         this.name = name;
+    }
+    public Thing(String name, int place){
+        this.name = name;
+        this.place=place;
     }
     public void place(int objet){
         this.place+=objet;   
@@ -41,18 +46,21 @@ class Thing{
 class Box{
     List<Thing> contents;
     private boolean ouvert;
-    private int capacité;
+    private int capacity;
+    private String nom;
 
 
     public Box(){
         contents = new ArrayList<Thing>();
         this.ouvert = false;
-        this.capacité=-1;
+        this.capacity=-1;
+        this.nom="";
     }
-    public Box(boolean ouvert){
+    public Box(boolean ouvert, int capa, String nom){
         contents = new ArrayList<Thing>();
         this.ouvert = true;
-        this.capacité=0;
+        this.capacity=capa;
+        this.capacity=capa;
     }
     public void add(String truc){
         Thing val =new Thing(truc);
@@ -100,14 +108,14 @@ class Box{
     }
 
     public int setCapacity(int cap){
-        return this.capacité=cap;
+        return this.capacity=cap;
     }
     public int getCapacity(){
-        return this.capacité;
+        return this.capacity;
     }
 
     public boolean hasRoomFor(Thing obj){
-        if (this.capacité-obj.getvolume()>0){
+        if (this.capacity-obj.getvolume()>0){
             return true;
         }
         else{
@@ -130,6 +138,9 @@ class Box{
         finally{
             System.out.println("fin");}
         }
-
+        @Override
+        public boolean equals(Objet obj){
+            if (obj==null){}
+        }
     }
-    
+
